@@ -40,18 +40,17 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    @topic = Topic.new(params[:topic])
-
-    respond_to do |format|
-      if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
-        format.json { render json: @topic, status: :created, location: @topic }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
-      end
+  @topic = Topic.new(params[:topic])
+  respond_to do |format|
+    if @topic.save
+      format.html { redirect_to topics_path, notice: 'Topic was successfully created.' }
+      format.json { render json: @topic, status: :created, location: @topic }
+    else
+      format.html { render action: "new" }
+      format.json { render json: @topic.errors, status: :unprocessable_entity }
     end
   end
+end
 
   # PUT /topics/1
   # PUT /topics/1.json
